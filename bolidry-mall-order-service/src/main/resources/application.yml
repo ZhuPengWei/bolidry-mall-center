@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: bolidry-mall-order
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bolidry_mall_order?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: zpwzpwzpw
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 3000
+
+server:
+  port: 8005
+
+dubbo:
+  scan:
+    base-packages: org.bolidry.mall.order.api
+  registry:
+    address: spring-cloud://192.168.31.77
+  protocol:
+    name: dubbo
+    port: 28085
+  consumer:
+    check: false
+  provider:
+    threads: 800
+    actives: 200
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+
+
+rocketmq:
+  name-server: localhost:9876
+
+#seata配置
+seata:
+  tx-service-group: bolidry-mall-order-group
+  service:
+    grouplist:
+      bolidry-mall-seata: 127.0.0.1:8091
+    vgroup-mapping:
+      bolidry-mall-order-group: bolidry-mall-seata
