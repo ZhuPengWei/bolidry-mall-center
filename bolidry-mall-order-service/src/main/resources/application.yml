@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: bolidry-mall-order
   # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,7 +24,7 @@ dubbo:
   scan:
     base-packages: org.bolidry.mall.order.api
   registry:
-    address: spring-cloud://192.168.31.77
+    address: spring-cloud://192.168.125.146
   protocol:
     name: dubbo
     port: 28085

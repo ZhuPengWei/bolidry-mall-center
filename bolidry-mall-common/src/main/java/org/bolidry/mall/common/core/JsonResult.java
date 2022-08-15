@@ -86,4 +86,15 @@ public class JsonResult<T> implements Serializable {
         return new JsonResult<>(REQUEST_FAIL, null, DEFAULT_ERROR_CODE, errorMsg);
     }
 
+
+    /**
+     * 失败，固定状态码
+     *
+     * @param errorMsg
+     * @return
+     */
+    public static <T> JsonResult<T> buildError(String errorCode,String errorMsg) {
+        return new JsonResult<>(REQUEST_FAIL, null, errorCode, errorMsg);
+    }
+
 }

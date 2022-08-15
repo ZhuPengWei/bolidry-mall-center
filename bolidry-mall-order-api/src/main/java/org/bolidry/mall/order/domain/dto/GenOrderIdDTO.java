@@ -14,4 +14,9 @@ public class GenOrderIdDTO implements Serializable {
 
     private String orderId;
 
+    public static GenOrderIdDTO build(String orderId) {
+        GenOrderIdDTO result = new GenOrderIdDTO();
+        result.setOrderId(orderId);
+        return result;
+    }
 }
